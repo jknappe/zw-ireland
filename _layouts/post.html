@@ -1,86 +1,75 @@
 ---
-layout: default
+layout: base
 ---
 
-{% capture url %}{{ site.url | append: "$" | replace: "/$", "" | replace: "$", "" }}{% endcapture %}
+{% include header.html type="post" %}
 
 <div class="container">
-  <div class="section">
-    <div class="row">
-      <div class="col s12">
-        <article>
-          <div class="card">
-            {% if page.image.path %}
-            <div class="card-image">
-              <img class="materialboxed" data-caption="© {{ page.image.copyright }}" src="{{ page.image.path }}">
-              <span class="card-title truncate" style="background-color: rgba(0,0,0,.3); width: 100%;">{{ page.title }}</span>
-            </div>
-            {% endif %}
-            <div class="card-content">
-              {% unless page.image.path %}
-              <span class="card-title truncate">{{ page.title }}</span>
-              {% endunless %}
-              <p style="font-weight: 600; margin-bottom: 10px;"><time datetime="{{ post.date }}">{{ page.date | date_to_string }}</time>{% if site.author.disqus %} | <a href="{{ url }}{{ page.url }}#disqus_thread" data-disqus-identifier="{{ page.id }}">Comment</a>{% endif %}</p>
-              <div id="post-content">
-                {{ content | replace: "<img", "<img class='materialboxed'" }}
-              </div>
-              {% if page.ccl %}
-              <div class="center" style="margin-top: 16px;">
-                <table>
-                  <tr>
-                    <td>
-                      <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://i.creativecommons.org/l/{{ page.ccl | downcase }}/4.0/88x31.png" alt="크리에이티브 커먼즈 라이선스"></a>
-                    </td>
-                    <td>
-                      <span style="font-size: 12px; font-weight: 400; min-height: 31px;">
-                        <span rel="dct:type" xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title">{{ page.title }}</span> by <a rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/{{ site.author.github }}" property="cc:attributionName">{{ site.author.name }}</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/{{ page.ccl | downcase }}/4.0/">Creative Commons Attribution 4.0 International License</a>.<br>
-                        {% if site.author.email %}
-                        Permissions beyond the scope of this license may be available at <a xmlns:cc="http://creativecommons.org/ns#" href="mailto:{{ site.author.email }}" rel="cc:morePermissions">{{ site.author.email }}</a>.
-                        {% endif %}
-                      </span>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              {% endif %}
-              <div class="divider" style="margin: 16px 0;"></div>
-              {% for tag in page.tags %}
-                <div class="chip">{{ tag }}</div>
-              {% endfor %}
-            </div>
-          </div>
-        </article>
-      </div>
-      {% if site.author.disqus %}
-      <div class="col s12">
-        <article>
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title">Comments</span>
-              {% include disqus.html %}
-            </div>
-          </div>
-        </article>
-      </div>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      {% if page.gh-repo %}
+        {% assign gh_split =  page.gh-repo | split:'/'  %}
+        {% assign gh_user =  gh_split[0]  %}
+        {% assign gh_repo =  gh_split[1]  %}
+
+        <div id="header-gh-btns">
+          {% if page.gh-badge.size > 0 %}
+            {% for badge in page.gh-badge %}
+              {% case badge %}
+                {% when 'star'%}
+                  <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                {% when 'watch'%}
+                  <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=watch&v=2&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                {% when 'fork'%}
+                  <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=fork&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                {% when 'follow'%}
+                  <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+              {% endcase %}
+            {% endfor %}
+          {% endif %}
+        </div>
       {% endif %}
-      <div class="col s12">
-        {% if page.next %}
-        <div class="left">
-          <a class="btn-floating waves-effect waves-light white" href="{{ url }}{{ page.next.url }}"><i class="material-icons" style="color: rgba(0,0,0,.87);">arrow_back</i></a>
-          <span style="color: rgba(0,0,0,.87); margin-left: 8px;">Newer</span>
+
+      <article role="main" class="blog-post">
+        {{ content }}
+      </article>
+
+      {% if page.tags.size > 0 %}
+        <div class="blog-tags">
+          Tags:
+          {% if site.link-tags %}
+          {% for tag in page.tags %}
+            <a href="{{ site.baseurl }}/tags#{{- tag -}}">{{- tag -}}</a>
+          {% endfor %}
+          {% else %}
+            {{ page.tags | join: ", " }}
+          {% endif %}
         </div>
+      {% endif %}
+
+      {% if page.social-share %}
+        {% include social-share.html %}
+      {% endif %}
+
+      <ul class="pager blog-pager">
+        {% if page.previous.url %}
+        <li class="previous">
+          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Post</a>
+        </li>
         {% endif %}
-        {% if page.previous %}
-        <div class="right">
-          <span style="color: rgba(0,0,0,.87); margin-right: 8px;">Older</span>
-          <a class="btn-floating waves-effect waves-light white" href="{{ url }}{{ page.previous.url }}"><i class="material-icons" style="color: rgba(0,0,0,.87);">arrow_forward</i></a>
+        {% if page.next.url %}
+        <li class="next">
+          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
+        </li>
+        {% endif %}
+      </ul>
+
+      {% if page.comments %}
+        <div class="disqus-comments">
+          {% include disqus.html %}
         </div>
-        {% endif %}
-      </div>
+      {% endif %}
     </div>
   </div>
 </div>
-
-{% if site.author.disqus %}
-<script id="dsq-count-scr" src="//{{ site.author.disqus }}.disqus.com/count.js" async></script>
-{% endif %}

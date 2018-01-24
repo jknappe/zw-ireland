@@ -1,25 +1,9 @@
-<!DOCTYPE html>
+---
+layout: base
+---
 
-{% capture url %}{{ site.url | append: "$" | replace: "/$", "" | replace: "$", "" }}{% endcapture %}
+<div class="intro-header"></div>
 
-<html lang="ko">
-<head>
-  {% include meta.html %}
-  {% include css.html %}
-</head>
-
-<body>
-  <header>
-    {% include nav.html %}
-  </header>
-  <main>
-    <section>
-      {{ content }}
-    </section>
-  </main>
-  <footer class="page-footer">
-    {% include footer.html %}
-  </footer>
-  {% include js.html %}
-</body>
-</html>
+<div role="main" class="container">
+  {{ content }}
+</div>
