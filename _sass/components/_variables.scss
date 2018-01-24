@@ -35,14 +35,14 @@
 // 1. Colors
 // ==========================================================================
 
-$primary-color: color("deep-orange" "lighten-1") !default;
+$primary-color: color("deep-orange", "lighten-1") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("teal" "darken-2") !default;
-$success-color: color("yellow" "lighten-1") !default;
-$error-color: color("red" "accent-4") !default;
-$link-color: color("grey" "darken-4") !default;
+$secondary-color: color("teal", "darken-2") !default;
+$success-color: color("yellow", "lighten-1") !default;
+$error-color: color("red", "accent-4") !default;
+$link-color: color("grey", "darken-4") !default;
 
 
 // 2. Badges
