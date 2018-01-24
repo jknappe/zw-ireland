@@ -23,9 +23,9 @@ description: A virtual proof that name is awesome!
 
 # List of links in the navigation bar
 navbar-links:
-  events: 
-	- Spring Clean Festival 2018: "2018_spring_clean_festival"
-	- Christmas Festival 2017: "2017_christmas_festival"
+  Events: 
+    - Spring Clean Festival 2018: "2018_spring_clean_festival"
+    - Christmas Festival 2017: "2017_christmas_festival"
   get involved: "get_involved"
   press: "press"
   contact: "contact"
