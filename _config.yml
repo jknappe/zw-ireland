@@ -1,12 +1,12 @@
 name: Jekyll Themes
-url: http://matt.harzewski.com
+url: https://github.com/jknappe/zw-ireland
 description: Insert tagline here
 
 permalink: /themes/:title/
 
 gems: [jekyll-paginate]
 
-highlighter: pygments
+highlighter: rouge
 paginate: 20
 
 markdown: rdiscount
