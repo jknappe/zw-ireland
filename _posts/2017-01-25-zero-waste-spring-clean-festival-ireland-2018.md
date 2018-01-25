@@ -2,7 +2,7 @@
 layout: post
 title: Zero Waste Spring Clean Festival 2018
 subtitle: Join us for our fourth Zero Waste Festival on Sunday, June 2018
-#image: /img/zero-waste-spring-clean-festival-ireland-2018.png
+tags: [Zero Waste Festival, Ireland, Dublin]
 ---
 
 
