@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Contact
+title: Contact us
 #subtitle: Why you'd want to go on a date with me
 ---
 
