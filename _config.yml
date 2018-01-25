@@ -17,16 +17,16 @@ baseurl: /zw-ireland
 title: Zero Waste Festival Ireland
 
 # Short description of your site
-description: A virtual proof that name is awesome!
+description: reduce waste | save resources | live sustainably
 
 # --- Navigation bar options --- #
 
 # List of links in the navigation bar
 navbar-links:
   Events: 
-    - Spring Clean Festival 2018: "2018_spring_clean_festival"
-    - Christmas Festival 2017: "2017_christmas_festival"
-  get involved: "get_involved"
+    - Spring Clean Festival 2018: "2018_spring-clean-festival"
+    - Christmas Festival 2017: "2017-christmas-festival"
+  get involved: "get-involved"
   press: "press"
   contact: "contact"
   home: "http://www.janknappe.com/zw-ireland/"
