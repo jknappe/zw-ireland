@@ -8,9 +8,9 @@ use-site-title: true
 <div class="posts-list">
   {% for post in paginator.posts %}
   <article class="post-preview">
+			<img src="{{ site.baseurl }}/img/zw-icon.png" width = "5%" />
     <a href="{{ post.url | prepend: site.baseurl }}">
 	  <h2 class="post-title">
-			<img src="{{ site.baseurl }}/img/zw-icon.png" width = "3%" />
 			{{ post.title }}</h2>
 
 	  {% if post.subtitle %}
