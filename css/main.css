@@ -23,7 +23,8 @@ p {
 }
 h1 {
   font-family: 'Overlock', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800;
+  font-weight: 600;
+  font-size: 2.0em;
   font-variant: small-caps;
   color: #DC6B00;
 }
